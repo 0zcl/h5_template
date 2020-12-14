@@ -1,0 +1,51 @@
+@import "./variable.scss";
+@import "./font/font.scss";
+@import "./reset.scss";
+
+body,
+html {
+  max-width: 540PX;
+  margin: 0 auto !important;
+  font-weight:500;
+  height: 100%;
+  box-sizing: border-box;
+  /deep/ .common-login-bar {
+    max-width: 540PX;
+  }
+}
+
+.next-step-btn {
+  position: fixed;
+  bottom: 10px;
+  left:50%;
+  transform:translateX(-50%);
+  width:690px;
+  height:80px;
+  line-height:80px;
+  background:rgba(255,90,0,1);
+  border-radius:40px;
+  font-size:30px;
+  font-weight:800;
+  color:rgba(255,255,255,1);
+}
+
+.btn-disable {
+  opacity: 0.4;
+}
+
+.cell-bottom-line {
+  position: relative;
+  &::after {
+    position: absolute; // 用了绝对定位
+    content: ' ';
+    pointer-events: none;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid #ebedf0;
+    background: rgba(224, 224, 224, 1);
+  }
+  &:last-child::after {
+    display: none;
+  }
+}
