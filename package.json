@@ -1,6 +1,7 @@
 {
-  "name": "h5_template",
-  "version": "0.1.0",
+  "name": "{{projectName}}",
+  "version": "{{projectName}}",
+  "description": "{{projectDescription}}",
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve --mode dev",
@@ -13,6 +14,7 @@
     "start": "npm run serve --page=pages/classChoice"
   },
   "dependencies": {
+    "@i61/h5-sdk": "^1.0.3",
     "clipboard": "^2.0.6",
     "core-js": "^3.6.4",
     "qs": "^6.9.4",
@@ -27,6 +29,7 @@
   "devDependencies": {
     "@commitlint/cli": "^9.1.1",
     "@commitlint/config-conventional": "^9.1.1",
+    "@i61/utils-library": "^1.0.4",
     "@vue/cli-plugin-babel": "~4.2.0",
     "@vue/cli-plugin-eslint": "^4.3.1",
     "@vue/cli-service": "~4.2.0",
