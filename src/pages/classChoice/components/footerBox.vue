@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     getFooterList() {
-      return this.$store.state.footerList
+      return []
     }
   },
   watch: {

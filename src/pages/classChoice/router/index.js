@@ -1,11 +1,8 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
-Vue.use(VueRouter)
 const routes = [
   {
-    path: '*',
-    name: '',
+    name: '/',
     redirect: '/home'
   },
   {
@@ -18,7 +15,8 @@ const routes = [
   }
 ]
 
-const router = new VueRouter({
+const router = createRouter({
+  history: createWebHashHistory(),
   routes
 })
 

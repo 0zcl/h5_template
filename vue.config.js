@@ -9,7 +9,7 @@ const entry = getEntry('src/pages/*/main.js', getNPMParams().page, '.')
 const pageName = getNPMParams().page.split('/')[1]
 let projectConfig = {}
 if (fs.existsSync('./src/pages/' + pageName + '/vue.config.js')) {
-   projectConfig = require('./src/pages/' + pageName + '/vue.config.js')
+  projectConfig = require('./src/pages/' + pageName + '/vue.config.js')
 }
 console.log('projectConfig', projectConfig)
 
@@ -22,6 +22,7 @@ module.exports = loash.merge({
   },
   configureWebpack: {
     resolve: {
+      symlinks: false,
       alias: {
         '@': path.resolve(__dirname, 'src'),
         utils: path.resolve(__dirname, 'src/utils'), // 公用的函数
@@ -50,4 +51,4 @@ module.exports = loash.merge({
       }
     }
   }
-}, projectConfig)
+}, {})

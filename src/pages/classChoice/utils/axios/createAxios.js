@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { Toast } from 'vant'
 export default function createAxios(conf = {}) {
-  console.log('conf', conf, type)
   const service = axios.create(conf)
   // request拦截器
   service.interceptors.request.use(

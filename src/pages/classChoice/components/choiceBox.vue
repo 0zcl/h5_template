@@ -1,7 +1,7 @@
 <template>
   <div class="table">
     <div class="talbe_header cell-bottom-line">
-      <div class="time-type">{{timeType | dayFilter}}</div>
+      <div class="time-type">{{ getDay(timeType) }}</div>
       <div class="week-content">
         <div class="week_item" v-for="(item, index) in weekList" :key="index">{{ item }}</div>
       </div>
@@ -23,6 +23,27 @@
 </template>
 
 <script>
+import { reactive, toRefs } from 'vue'
+
+function useGetFillter() {
+  const getState = (state, userCount) => {
+    const map = {
+      2: '可选',
+      3: '较久',
+      4: `差${userCount}人`
+    }
+    return map[state] || '-'
+  }
+  const getDay = day => {
+    const map = {
+      day: '白天',
+      night: '晚上'
+    }
+    return map[day] || '-'
+  }
+  return { getState, getDay }
+}
+
 export default {
   props: {
     // day or night
@@ -40,11 +61,8 @@ export default {
       require: true
     }
   },
-  components: {
-  },
-  data() {
-    return {
-      // footerList: [], // 用于底部显示
+  setup(props, context) {
+    const state = reactive({
       weekList: ['二', '三', '四', '五', '六', '日'],
       weekObj: {
         2: '二',
@@ -54,26 +72,13 @@ export default {
         6: '六',
         7: '六'
       }
+    })
+    const { getState, getDay } = useGetFillter()
+    return {
+      ...toRefs(state),
+      getState,
+      getDay
     }
-  },
-  filters: {
-    stateFilter(state, userCount) {
-      const map = {
-        2: '可选',
-        3: '较久',
-        4: `差${userCount}人`
-      }
-      return map[state] || '-'
-    },
-    dayFilter(day) {
-      const map = {
-        day: '白天',
-        night: '晚上'
-      }
-      return map[day] || '-'
-    }
-  },
-  methods: {
   }
 }
 </script>

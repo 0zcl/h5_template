@@ -27,14 +27,33 @@
         :tableObj="tableObj"
       ></choice-box>
     </div>
-    <footer-box></footer-box>
-    <Loading v-if="loading"></Loading>
+
+    <van-cell
+      is-link
+      title="取消显示关闭图标"
+    />
+
+    <demo-button type="primary" style="margin-left: 15px">按钮</demo-button>
+
+     <footer-box></footer-box>
+
+    <!-- <Loading v-if="loading"></Loading> -->
   </div>
+
+  <!-- <hll-dialog :show-close-icon="false">
+    <img
+      src="https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_320,m_lfit"
+    />
+  </hll-dialog> -->
+
 </template>
 
 <script>
 import choiceBox from 'classChoice/components/choiceBox'
 import footerBox from 'classChoice/components/footerBox'
+import { reactive, toRefs } from 'vue'
+// import HllDialog from 'zcl-mobile-ui/es/hll-dialog'
+// import 'zcl-mobile-ui/es/hll-dialog/style'
 
 export default {
   name: 'home',
@@ -42,8 +61,9 @@ export default {
     choiceBox,
     footerBox
   },
-  data() {
-    return {
+  setup() {
+    console.log('env', process.env)
+    const state = reactive({
       loading: false,
       modify: false, // 是否重新选择
       statusList: [
@@ -63,12 +83,10 @@ export default {
       dayList: [],
       nightList: [],
       tableObj: {}
+    })
+    return {
+      ...toRefs(state)
     }
-  },
-  created() {
-    console.log('env', process.env)
-  },
-  methods: {
   }
 }
 </script>
