@@ -14,7 +14,7 @@
     "start": "npm run serve --page=pages/classChoice"
   },
   "dependencies": {
-    "@i61/h5-sdk": "^1.0.4",
+    "@i61/h5-sdk": "^1.1.0",
     "@i61/utils-library": "^1.1.1",
     "core-js": "^3.6.4",
     "qs": "^6.9.4",
@@ -24,9 +24,10 @@
     "vue": "^3.2.20",
     "vue-awesome-swiper": "^4.1.1",
     "vue-router": "^4.0.11",
-    "zcl-mobile-ui": "^1.0.2"
+    "zcl-mobile-ui": "^1.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-umd": "^7.14.5",
     "@commitlint/cli": "^9.1.1",
     "@commitlint/config-conventional": "^9.1.1",
     "@vue/cli-plugin-babel": "^4.5.0",

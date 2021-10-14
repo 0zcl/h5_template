@@ -31,38 +31,43 @@
     <van-cell
       is-link
       title="取消显示关闭图标"
+      @click="$refs.hllDialog.show()"
     />
 
-    <demo-button type="primary" style="margin-left: 15px">按钮</demo-button>
-
-     <footer-box></footer-box>
-
-    <!-- <Loading v-if="loading"></Loading> -->
+    <!-- <footer-box></footer-box> -->
   </div>
 
-  <!-- <hll-dialog :show-close-icon="false">
+  <hll-dialog ref="hllDialog" width=200>
     <img
+      style="width: 100%"
       src="https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_320,m_lfit"
     />
-  </hll-dialog> -->
+  </hll-dialog>
+
+  <demo-button type="primary" style="margin-left: 15px" @click="loading = true">点击加载中</demo-button>
+  <div>
+  <Loading v-if="loading"></Loading>
+  </div>
 
 </template>
 
 <script>
 import choiceBox from 'classChoice/components/choiceBox'
-import footerBox from 'classChoice/components/footerBox'
-import { reactive, toRefs } from 'vue'
-// import HllDialog from 'zcl-mobile-ui/es/hll-dialog'
-// import 'zcl-mobile-ui/es/hll-dialog/style'
+// import footerBox from 'classChoice/components/footerBox'
+import { reactive, toRefs, getCurrentInstance } from 'vue'
 
 export default {
   name: 'home',
   components: {
-    choiceBox,
-    footerBox
+    choiceBox
   },
-  setup() {
+  setup(props) {
     console.log('env', process.env)
+    const internalInstance = getCurrentInstance() // for get this
+    console.log('internalInstance', internalInstance)
+    const utilsLibrary = internalInstance.appContext.config.globalProperties.$utilsLibrary
+    console.log('time', utilsLibrary.formatTime(new Date(), 'yyyy-MM-dd'))
+    console.log('props', props)
     const state = reactive({
       loading: false,
       modify: false, // 是否重新选择
@@ -93,7 +98,7 @@ export default {
 
 <style scoped lang="scss">
 .main-box {
-  min-height: 100vh;
+  // min-height: 100vh;
   box-sizing: border-box;
   padding-bottom: 150px;
   .header {

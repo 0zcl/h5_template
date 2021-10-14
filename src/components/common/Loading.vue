@@ -1,5 +1,5 @@
 <template>
-  <van-popup :close-on-click-overlay="false" v-model="show" class="popup">
+  <van-popup :close-on-click-overlay="false" v-model:show="show" class="mypopup">
     <svg
       viewBox="0 0 120 120"
       version="1.1"
@@ -87,20 +87,25 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 export default {
-  name: 'my-loading',
-  data() {
+  setup() {
+    const show = ref(true)
     return {
-      show: true
+      show
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-  .popup {
-    background-color: transparent;
+<style>
+  .mypopup {
+    font-size: 14px;
+    background-color: transparent !important;
   }
+</style>
+<style lang="scss" scoped>
+
   svg {
     height: 60px;
     width: 60px;
