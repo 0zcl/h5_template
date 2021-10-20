@@ -1,6 +1,6 @@
 {
   "name": "{{projectName}}",
-  "version": "{{projectName}}",
+  "version": "{{projectVersion}}",
   "description": "{{projectDescription}}",
   "private": true,
   "scripts": {
